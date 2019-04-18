@@ -10,7 +10,7 @@
 <%
     String vno=request.getParameter("vno");
     
-    Connection con=DriverManager.getConnection("jdbc:mysql://127.0.0.1/TollApp","root","8858");
+    Connection con=db.getConnection();
     PreparedStatement stmt=con.prepareStatement("Select V1.*,J1.* from vehicles V1,journey_details J1 where V1.vehcile_id=J1.vehcile_id and  vnumber=? and OutDate is null");
     stmt.setString(1,vno);
     ResultSet rs=stmt.executeQuery();
