@@ -16,7 +16,7 @@
     <body>
         <%
                 
-                Connection con=DriverManager.getConnection("jdbc:mysql://127.0.0.1","root","8858");
+                Connection con=db.getConnection();
                 PreparedStatement stmt=con.prepareStatement("Create Database TollApp");
                 stmt.executeUpdate();
                 stmt=con.prepareStatement("Use TollApp");
