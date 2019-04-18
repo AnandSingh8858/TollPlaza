@@ -5,6 +5,8 @@
 --%>
 
 <%@page import="java.sql.*" contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:useBean id="db" class="com.tollplaza.bean.DBConnector" />
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,7 +15,7 @@
     </head>
     <body>
         <%
-                Class.forName("org.gjt.mm.mysql.Driver");
+                
                 Connection con=DriverManager.getConnection("jdbc:mysql://127.0.0.1","root","8858");
                 PreparedStatement stmt=con.prepareStatement("Create Database TollApp");
                 stmt.executeUpdate();
@@ -25,7 +27,7 @@
                 stmt.executeUpdate();
                 stmt=con.prepareStatement("CREATE TABLE vehicle_owners(ulogin varchar(30),name varchar(30),father varchar(30),DOB date,Address varchar(30),Mobile varchar(30))");
                 stmt.executeUpdate();
-                stmt=con.prepareStatement("CREATE TABLE vehicles(VID int primary key,ulogin varchar(30),VehicleNo varchar(20),VehicleType varchar(20),RegistrationDate date)");
+                stmt=con.prepareStatement("CREATE TABLE vehicles(vehicle_id int primary key,ulogin varchar(30),vnumber varchar(20),VehicleType varchar(20),RegistrationDate date)");
                 stmt.executeUpdate();
                 stmt=con.prepareStatement("CREATE TABLE amount_transactions(TID int primary key,ulogin varchar(30),Amt int,TDate date,tType varchar(1),details varchar(20),tby varchar(30))");
                 stmt.executeUpdate();

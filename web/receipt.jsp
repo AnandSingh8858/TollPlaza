@@ -5,6 +5,8 @@
 --%>
 
 <%@page import="java.sql.*" contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:useBean id="db" class="com.tollplaza.bean.DBConnector" />
+
 <%
         if(session.getAttribute("ULOGIN")==null)
         {
@@ -14,7 +16,7 @@
         {
             response.sendRedirect("index.jsp");
         }
-        Connection con=(Connection)session.getAttribute("CON");
+        Connection con=db.getConnection();
         PreparedStatement stmt;
         ResultSet rs;
         String tid="";
@@ -45,7 +47,7 @@
         <img src="images/banner.jpg" width="100%" height="250px"><hr>
         <div style="width:15%; height:300px; background-color: lavender; float: left">
             <a href="member.jsp">Home</a><hr>
-            <a href="myvehicles.jsp">My vehicles</a><hr>
+            <a href="myvehicles.jsp">My Vehicles</a><hr>
             <a href="mytransactions.jsp">My Transactions</a><hr>
             <a href="mytrack.jsp">My Journey</a><hr>
             <a href="feedback.jsp">Feedback</a><hr>

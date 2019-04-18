@@ -5,12 +5,13 @@
 --%>
 
 <%@page import="java.sql.*" contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:useBean id="db" class="com.tollplaza.bean.DBConnector" />
+
 <%
         String msg="";
         if(request.getParameter("b1")!=null)
         {
-                Class.forName("org.gjt.mm.mysql.Driver");
-                Connection con=DriverManager.getConnection("jdbc:mysql://127.0.0.1/TollApp","root","8858");
+                Connection con=db.getConnection();
                 PreparedStatement stmt=con.prepareStatement("Select * from users where ulogin=? and upass=?");
                 stmt.setString(1,request.getParameter("t1"));
                 stmt.setString(2,request.getParameter("t2"));
@@ -20,7 +21,6 @@
                     String utype=rs.getString(3);
                     session.setAttribute("UTYPE",utype);
                     session.setAttribute("ULOGIN",request.getParameter("t1"));
-                    session.setAttribute("CON",con);
                     if(utype.equals("admin"))
                     {
                         response.sendRedirect("admin.jsp");

@@ -5,16 +5,18 @@
 --%>
 
 <%@page import="java.sql.*" contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:useBean id="db" class="com.tollplaza.bean.DBConnector" />
+
 <%
         if(session.getAttribute("ULOGIN")==null)
         {
             response.sendRedirect("index.jsp");
         }
-        if(!session.getAttribute("UTYPE").toString().equals("admin"))
+        else if(!session.getAttribute("UTYPE").toString().equals("admin"))
         {
             response.sendRedirect("index.jsp");
         }
-        Connection con=(Connection)session.getAttribute("CON");
+        Connection con=db.getConnection();
         PreparedStatement stmt;
         ResultSet rs;
 %>
@@ -63,7 +65,7 @@
                     out.write("<td>"+rs.getString(4)+"</td>");
                     out.write("<td>"+rs.getString(5)+"</td>");
                     out.write("<td>"+rs.getString(6)+"</td>");
-                    out.write("<td><a href='showvehicles.jsp?email="+rs.getString(1)+"'>Show vehicles</a></td>");
+                    out.write("<td><a href='showvehicles.jsp?email="+rs.getString(1)+"'>Show Vehicles</a></td>");
                     out.write("</tr>");
                 }
                 }

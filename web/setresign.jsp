@@ -5,8 +5,10 @@
 --%>
 
 <%@page import="java.sql.*" contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:useBean id="db" class="com.tollplaza.bean.DBConnector" />
+
         <%
-                Connection con=(Connection)session.getAttribute("CON");
+                Connection con=db.getConnection();
                 PreparedStatement stmt;
                 ResultSet rs;
                 java.util.Date dt=new java.util.Date();

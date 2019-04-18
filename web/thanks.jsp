@@ -5,11 +5,12 @@
 --%>
 
 <%@page import="java.sql.*" contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:useBean id="db" class="com.tollplaza.bean.DBConnector" />
+
 <%
         if(request.getParameter("b1")!=null)
         {
-                Class.forName("org.gjt.mm.mysql.Driver");
-                Connection con=DriverManager.getConnection("jdbc:mysql://127.0.0.1/TollApp","root","8858");
+Connection con=db.getConnection();
                 PreparedStatement stmt=con.prepareStatement("Insert into vehicle_owners values(?,?,?,?,?,?)");
                 stmt.setString(1,request.getParameter("t1"));
                 stmt.setString(2,request.getParameter("t4"));

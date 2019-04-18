@@ -5,9 +5,11 @@
 --%>
 
 <%@page import="java.sql.*" contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:useBean id="db" class="com.tollplaza.bean.DBConnector" />
+
 <%
     String vno=request.getParameter("vno");
-    Class.forName("org.gjt.mm.mysql.Driver");
+    
     Connection con=DriverManager.getConnection("jdbc:mysql://127.0.0.1/TollApp","root","8858");
     PreparedStatement stmt=con.prepareStatement("Select V1.*,J1.* from vehicles V1,journey_details J1 where V1.vehcile_id=J1.vehcile_id and  vnumber=? and OutDate is null");
     stmt.setString(1,vno);

@@ -3,18 +3,19 @@
     Created on : Mar 2, 2019, 9:12:01 AM
     Author     : Administrator
 --%>
-
 <%@page import="java.sql.*" contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:useBean id="db" class="com.tollplaza.bean.DBConnector" />
+
 <%
         if(session.getAttribute("ULOGIN")==null)
         {
             response.sendRedirect("index.jsp");
         }
-        if(!session.getAttribute("UTYPE").toString().equals("admin"))
+        else if(!session.getAttribute("UTYPE").toString().equals("admin"))
         {
             response.sendRedirect("index.jsp");
         }
-        Connection con=(Connection)session.getAttribute("CON");
+        Connection con=db.getConnection();
         PreparedStatement stmt;
         ResultSet rs;
 %>
