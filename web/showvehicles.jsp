@@ -43,7 +43,7 @@
                     <th>Vehicle Id</th><th>Vehicle No</th><th>Vehicle Type</th><th>Registration Date</th><th></th>
                 </tr>
             <%
-                stmt=con.prepareStatement("Select * from Vehicles where ulogin=?");
+                stmt=con.prepareStatement("Select * from vehicles where ulogin=?");
                 stmt.setString(1,request.getParameter("email"));
                 rs=stmt.executeQuery();
                 while(rs.next())        

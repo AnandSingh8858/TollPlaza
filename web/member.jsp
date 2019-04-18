@@ -29,7 +29,7 @@
         <img src="images/banner.jpg" width="100%" height="250px"><hr>
         <div style="width:15%; height:300px; background-color: lavender; float: left">
             <a href="member.jsp">Home</a><hr>
-            <a href="myvehicles.jsp">My Vehicles</a><hr>
+            <a href="myvehicles.jsp">My vehicles</a><hr>
             <a href="mytransactions.jsp">My Transactions</a><hr>
             <a href="mytrack.jsp">My Journey</a><hr>
             <a href="feedback.jsp">Feedback</a><hr>
@@ -37,7 +37,7 @@
         </div>
         <div style="width:84%;background-color: antiquewhite; float: right">
             <%
-                    stmt=con.prepareStatement("Select * from VehicleOwners where ulogin=?");
+                    stmt=con.prepareStatement("Select * from vehicle_owners where ulogin=?");
                     stmt.setObject(1,session.getAttribute("ULOGIN"));
                     rs=stmt.executeQuery();
                     if(rs.next())

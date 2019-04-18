@@ -19,7 +19,7 @@
         ResultSet rs;
         if(request.getParameter("b1")!=null)
         {
-                stmt=con.prepareStatement("Insert into tollstaff values(?,?,?,?,?,null,?,?)");
+                stmt=con.prepareStatement("Insert into toll_staff values(?,?,?,?,?,null,?,?)");
                 stmt.setString(1,request.getParameter("t1"));
                 stmt.setString(2,request.getParameter("t3"));
                 stmt.setString(3,request.getParameter("t4"));
@@ -28,7 +28,7 @@
                 stmt.setString(6,request.getParameter("t8"));                
                 stmt.setString(7,request.getParameter("t9"));                
                 stmt.executeUpdate();
-                stmt=con.prepareStatement("Insert into Users values(?,?,'admin')");
+                stmt=con.prepareStatement("Insert into users values(?,?,'admin')");
                 stmt.setString(1,request.getParameter("t1"));
                 stmt.setString(2,request.getParameter("t2"));
                 stmt.executeUpdate();
@@ -94,7 +94,7 @@
                     <th>Email</th><th>Name</th><th>Father</th><th>Appointment Date</th><th>Date of Birth</th><th>Resignation Date</th><th>Address</th><th>Post</th><th></th>
                 </tr>
             <%
-                stmt=con.prepareStatement("Select * from tollstaff where post='Administrator'");
+                stmt=con.prepareStatement("Select * from toll_staff where post='Administrator'");
                 rs=stmt.executeQuery();
                 while(rs.next())        
                 {

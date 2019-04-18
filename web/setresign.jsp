@@ -11,7 +11,7 @@
                 ResultSet rs;
                 java.util.Date dt=new java.util.Date();
                 String d=(dt.getYear()+1900)+"-"+(dt.getMonth()+1)+"-"+dt.getDate();
-                stmt=con.prepareStatement("Update tollstaff set DOL=? where ulogin=?");
+                stmt=con.prepareStatement("Update toll_staff set DOL=? where ulogin=?");
                 stmt.setString(1,d);
                 stmt.setString(2,request.getParameter("email"));
                 stmt.executeUpdate();

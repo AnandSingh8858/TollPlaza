@@ -29,7 +29,7 @@
         <img src="images/banner.jpg" width="100%" height="250px"><hr>
         <div style="width:15%; height:300px; background-color: lavender; float: left">
             <a href="member.jsp">Home</a><hr>
-            <a href="myvehicles.jsp">My Vehicles</a><hr>
+            <a href="myvehicles.jsp">My vehicles</a><hr>
             <a href="mytransactions.jsp">My Transactions</a><hr>
             <a href="mytrack.jsp">My Journey</a><hr>
             <a href="feedback.jsp">Feedback</a><hr>
@@ -41,7 +41,7 @@
                     <th>Vehicle Id</th><th>Vehicle No</th><th>Vehicle Type</th><th>In Date</th><th>Out Date</th><th>Amount</th>
                 </tr>
             <%
-                stmt=con.prepareStatement("Select V1.*,V2.* from Vehicles,JourneyDetails where v1.vid=v2.vid and v1.ulogin=?");
+                stmt=con.prepareStatement("Select V1.*,V2.* from vehicles,journey_details where v1.vid=v2.vid and v1.ulogin=?");
                 stmt.setObject(1,session.getAttribute("ULOGIN"));
                 rs=stmt.executeQuery();
                 while(rs.next())        

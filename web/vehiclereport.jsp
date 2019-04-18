@@ -45,7 +45,7 @@
             <%
                 if(request.getParameter("b1")!=null)
                 {
-                    stmt=con.prepareStatement("Select indate,outdate,amt,VehicleNo,VehicleType from JourneyDetails,Vehicles where JourneyDetails.vid=Vehicles.vid and indate>=? and indate<=?");
+                    stmt=con.prepareStatement("Select indate,outdate,amt, vnumber,vtype from journey_details,vehicles where journey_details.vid=vehicles.vid and indate>=? and indate<=?");
                     stmt.setString(1,request.getParameter("t1"));
                     stmt.setString(2,request.getParameter("t2"));
                     rs=stmt.executeQuery();

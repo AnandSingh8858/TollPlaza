@@ -44,7 +44,7 @@
                     <th>Transaction Id</th><th>Email</th><th>Amount</th><th>Transaction Date</th><th>Debit/Credit</th><th>Details</th><th>Entry By Staff?</th><th></th>
                 </tr>
             <%
-                stmt=con.prepareStatement("Select * from amounttransactions order by tid");
+                stmt=con.prepareStatement("Select * from amount_transactions order by tid");
                 rs=stmt.executeQuery();
                 while(rs.next())        
                 {

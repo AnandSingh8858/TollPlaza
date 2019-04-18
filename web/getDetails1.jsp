@@ -9,7 +9,7 @@
     String vno=request.getParameter("vno");
     Class.forName("org.gjt.mm.mysql.Driver");
     Connection con=DriverManager.getConnection("jdbc:mysql://127.0.0.1/TollApp","root","8858");
-    PreparedStatement stmt=con.prepareStatement("Select V1.*,J1.* from Vehicles V1,JourneyDetails J1 where V1.VID=J1.VID and VehicleNo=? and OutDate is null");
+    PreparedStatement stmt=con.prepareStatement("Select V1.*,J1.* from vehicles V1,journey_details J1 where V1.vehcile_id=J1.vehcile_id and  vnumber=? and OutDate is null");
     stmt.setString(1,vno);
     ResultSet rs=stmt.executeQuery();
     String s="N";

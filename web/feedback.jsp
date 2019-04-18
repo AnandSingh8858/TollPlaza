@@ -19,11 +19,11 @@
         ResultSet rs;
         if(request.getParameter("b1")!=null)
         {
-            stmt=con.prepareStatement("Select count(*)+1 from Feedback");
+            stmt=con.prepareStatement("Select count(*)+1 from feedback");
             rs=stmt.executeQuery();
             String fid="";
             if(rs.next()) fid=rs.getString(1);
-            stmt=con.prepareStatement("Insert into Feedback values(?,?,?,?)");
+            stmt=con.prepareStatement("Insert into feedback values(?,?,?,?)");
             stmt.setString(1,fid);
             stmt.setObject(2,session.getAttribute("ULOGIN"));
             stmt.setString(3,request.getParameter("t1"));
@@ -44,7 +44,7 @@
         <img src="images/banner.jpg" width="100%" height="250px"><hr>
         <div style="width:15%; height:300px; background-color: lavender; float: left">
             <a href="member.jsp">Home</a><hr>
-            <a href="myvehicles.jsp">My Vehicles</a><hr>
+            <a href="myvehicles.jsp">My vehicles</a><hr>
             <a href="mytransactions.jsp">My Transactions</a><hr>
             <a href="mytrack.jsp">My Journey</a><hr>
             <a href="feedback.jsp">Feedback</a><hr>

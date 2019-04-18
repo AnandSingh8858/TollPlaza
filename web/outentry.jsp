@@ -19,7 +19,7 @@
         ResultSet rs;
         if(request.getParameter("b1")!=null)
         {
-            stmt=con.prepareStatement("Update journeydetails set OutDate=? where jid=?");
+            stmt=con.prepareStatement("Update journey_details set OutDate=? where jid=?");
             stmt.setString(1,request.getParameter("t8")+" "+ request.getParameter("t9"));
             stmt.setString(2,request.getParameter("t5"));
             stmt.executeUpdate();

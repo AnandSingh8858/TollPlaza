@@ -10,7 +10,7 @@
         {
                 Class.forName("org.gjt.mm.mysql.Driver");
                 Connection con=DriverManager.getConnection("jdbc:mysql://127.0.0.1/TollApp","root","8858");
-                PreparedStatement stmt=con.prepareStatement("Insert into VehicleOwners values(?,?,?,?,?,?)");
+                PreparedStatement stmt=con.prepareStatement("Insert into vehicle_owners values(?,?,?,?,?,?)");
                 stmt.setString(1,request.getParameter("t1"));
                 stmt.setString(2,request.getParameter("t4"));
                 stmt.setString(3,request.getParameter("t5"));
@@ -18,7 +18,7 @@
                 stmt.setString(5,request.getParameter("t7"));
                 stmt.setString(6,request.getParameter("t8"));                
                 stmt.executeUpdate();
-                stmt=con.prepareStatement("Insert into Users values(?,?,'member')");
+                stmt=con.prepareStatement("Insert into users values(?,?,'member')");
                 stmt.setString(1,request.getParameter("t1"));
                 stmt.setString(2,request.getParameter("t2"));
                 stmt.executeUpdate();

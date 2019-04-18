@@ -51,7 +51,7 @@
             <%
                 if(request.getParameter("b1")!=null)
                 {
-                stmt=con.prepareStatement("Select V1.*,V2.* from VehicleOwners V1,Vehicles V2 where V1.ulogin=v2.ulogin and VehicleNo=?");
+                stmt=con.prepareStatement("Select V1.*,V2.* from vehicle_owners V1,vehicles V2 where V1.ulogin=v2.ulogin and  vnumber=?");
                 stmt.setString(1,request.getParameter("t1"));
                 rs=stmt.executeQuery();
                 while(rs.next())        

@@ -44,7 +44,7 @@
                     <th>Email</th><th>Name</th><th>Father</th><th>Date of Birth</th><th>Address</th><th>Mobile</th><th></th>
                 </tr>
             <%
-                stmt=con.prepareStatement("Select * from VehicleOwners");
+                stmt=con.prepareStatement("Select * from vehicle_owners");
                 rs=stmt.executeQuery();
                 while(rs.next())        
                 {
@@ -55,7 +55,7 @@
                     out.write("<td>"+rs.getString(4)+"</td>");
                     out.write("<td>"+rs.getString(5)+"</td>");
                     out.write("<td>"+rs.getString(6)+"</td>");
-                    out.write("<td><a href='showvehicles.jsp?email="+rs.getString(1)+"'>Show Vehicles</a></td>");
+                    out.write("<td><a href='showvehicles.jsp?email="+rs.getString(1)+"'>Show vehicles</a></td>");
                     out.write("</tr>");
                 }                    
             %>

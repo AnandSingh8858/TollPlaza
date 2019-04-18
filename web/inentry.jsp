@@ -19,11 +19,11 @@
         ResultSet rs;
         if(request.getParameter("b1")!=null)
         {
-            stmt=con.prepareStatement("Select count(*)+1 from journeydetails");
+            stmt=con.prepareStatement("Select count(*)+1 from journey_details");
             rs=stmt.executeQuery();
             String jid="";
             if(rs.next()) jid=rs.getString(1);
-            stmt=con.prepareStatement("Insert into journeydetails values(?,?,?,null,?)");
+            stmt=con.prepareStatement("Insert into journey_details values(?,?,?,null,?)");
             stmt.setString(1,jid);
             stmt.setString(2,request.getParameter("t0"));
             java.util.Date ddt=new java.util.Date();
@@ -33,11 +33,11 @@
             stmt.setString(4,request.getParameter("t7"));
             stmt.executeUpdate();
             
-            stmt=con.prepareStatement("Select count(*)+1 from amounttransactions");
+            stmt=con.prepareStatement("Select count(*)+1 from amount_transactions");
             rs=stmt.executeQuery();
             String tid="";
             if(rs.next()) tid=rs.getString(1);
-            stmt=con.prepareStatement("Insert into amounttransactions values(?,?,?,?,?,?,?)");
+            stmt=con.prepareStatement("Insert into amount_transactions values(?,?,?,?,?,?,?)");
             stmt.setString(1,tid);
             stmt.setString(2,request.getParameter("t2"));
             stmt.setString(3,request.getParameter("t7"));

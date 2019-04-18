@@ -30,7 +30,7 @@
         <img src="images/banner.jpg" width="100%" height="250px"><hr>
         <div style="width:15%; height:300px; background-color: lavender; float: left">
             <a href="member.jsp">Home</a><hr>
-            <a href="myvehicles.jsp">My Vehicles</a><hr>
+            <a href="myvehicles.jsp">My vehicles</a><hr>
             <a href="mytransactions.jsp">My Transactions</a><hr>
             <a href="mytrack.jsp">My Journey</a><hr>
             <a href="feedback.jsp">Feedback</a><hr>
@@ -67,7 +67,7 @@
                     <th>Amount</th><th>Transaction Date</th><th>Debit/Credit</th><th>Details</th><th></th>
                 </tr>
             <%
-                stmt=con.prepareStatement("Select * from amounttransactions where ulogin=? order by tdate");
+                stmt=con.prepareStatement("Select * from amount_transactions where ulogin=? order by tdate");
                 stmt.setObject(1,session.getAttribute("ULOGIN"));
                 rs=stmt.executeQuery();
                 while(rs.next())        
@@ -81,11 +81,11 @@
                     out.write("</tr>");
                 }              
                 int credit=0,debit=0,bal=0;                
-                stmt=con.prepareStatement("Select sum(amt) from amounttransactions where ulogin=? and ttype='C'");
+                stmt=con.prepareStatement("Select sum(amt) from amount_transactions where ulogin=? and ttype='C'");
                 stmt.setObject(1,session.getAttribute("ULOGIN"));
                 rs=stmt.executeQuery();
                 if(rs.next()) credit=rs.getInt(1);
-                stmt=con.prepareStatement("Select sum(amt) from amounttransactions where ulogin=? and ttype='D'");
+                stmt=con.prepareStatement("Select sum(amt) from amount_transactions where ulogin=? and ttype='D'");
                 stmt.setObject(1,session.getAttribute("ULOGIN"));
                 rs=stmt.executeQuery();
                 if(rs.next()) debit=rs.getInt(1);

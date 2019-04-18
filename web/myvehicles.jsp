@@ -19,11 +19,11 @@
         ResultSet rs;
         if(request.getParameter("b1")!=null)
         {
-            stmt=con.prepareStatement("Select count(*)+1 from Vehicles");
+            stmt=con.prepareStatement("Select count(*)+1 from vehicles");
             rs=stmt.executeQuery();
             String vid="";
             if(rs.next()) vid=rs.getString(1);
-            stmt=con.prepareStatement("Insert into Vehicles values(?,?,?,?,?)");
+            stmt=con.prepareStatement("Insert into vehicles values(?,?,?,?,?)");
             stmt.setString(1,vid);
             stmt.setObject(2,session.getAttribute("ULOGIN"));
             stmt.setString(3,request.getParameter("t1"));
@@ -43,7 +43,7 @@
         <img src="images/banner.jpg" width="100%" height="250px"><hr>
         <div style="width:15%; height:300px; background-color: lavender; float: left">
             <a href="member.jsp">Home</a><hr>
-            <a href="myvehicles.jsp">My Vehicles</a><hr>
+            <a href="myvehicles.jsp">My vehicles</a><hr>
             <a href="mytransactions.jsp">My Transactions</a><hr>
             <a href="mytrack.jsp">My Journey</a><hr>
             <a href="feedback.jsp">Feedback</a><hr>
@@ -79,7 +79,7 @@
                     <th>Vehicle Id</th><th>Vehicle No</th><th>Vehicle Type</th><th>Registration Date</th><th></th>
                 </tr>
             <%
-                stmt=con.prepareStatement("Select * from Vehicles where ulogin=?");
+                stmt=con.prepareStatement("Select * from vehicles where ulogin=?");
                 stmt.setObject(1,session.getAttribute("ULOGIN"));
                 rs=stmt.executeQuery();
                 while(rs.next())        

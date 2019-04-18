@@ -51,7 +51,7 @@
             <%
                 if(request.getParameter("b1")!=null)
                 {
-                stmt=con.prepareStatement("Select * from VehicleOwners where name like ?");
+                stmt=con.prepareStatement("Select * from vehicle_owners where name like ?");
                 stmt.setString(1,"%"+request.getParameter("t1")+"%");
                 rs=stmt.executeQuery();
                 while(rs.next())        
@@ -63,7 +63,7 @@
                     out.write("<td>"+rs.getString(4)+"</td>");
                     out.write("<td>"+rs.getString(5)+"</td>");
                     out.write("<td>"+rs.getString(6)+"</td>");
-                    out.write("<td><a href='showvehicles.jsp?email="+rs.getString(1)+"'>Show Vehicles</a></td>");
+                    out.write("<td><a href='showvehicles.jsp?email="+rs.getString(1)+"'>Show vehicles</a></td>");
                     out.write("</tr>");
                 }
                 }
