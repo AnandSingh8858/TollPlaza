@@ -35,6 +35,7 @@
             <a href="paymentmgmt.jsp">Payment Management</a><hr>
             <a href="vsearch.jsp">Vehicle Search</a><hr>
             <a href="msearch.jsp">Member Search</a><hr>
+            <a href="vehiclereport.jsp">Vehicle Report</a><hr>
             <a href="logout.jsp">Logout</a><hr>
         </div>
         <div style="width:84%;background-color: antiquewhite; float: right">

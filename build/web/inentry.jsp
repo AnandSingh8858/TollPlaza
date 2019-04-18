@@ -26,7 +26,10 @@
             stmt=con.prepareStatement("Insert into journeydetails values(?,?,?,null,?)");
             stmt.setString(1,jid);
             stmt.setString(2,request.getParameter("t0"));
-            stmt.setString(3,request.getParameter("t5")+" "+ request.getParameter("t6"));
+            java.util.Date ddt=new java.util.Date();
+            String dt=(ddt.getYear()+1900)+"-"+(ddt.getMonth()+1)+"-"+ddt.getDate();
+            String time=ddt.getHours()+":"+ddt.getMinutes()+":"+ddt.getSeconds();
+            stmt.setString(3,dt+" "+time);            
             stmt.setString(4,request.getParameter("t7"));
             stmt.executeUpdate();
             
@@ -38,7 +41,7 @@
             stmt.setString(1,tid);
             stmt.setString(2,request.getParameter("t2"));
             stmt.setString(3,request.getParameter("t7"));
-            stmt.setString(4,request.getParameter("t5"));
+            stmt.setString(4,dt);
             stmt.setString(5,"D");
             stmt.setString(6,"Toll Tax");
             stmt.setObject(7,session.getAttribute("ULOGIN"));
@@ -73,6 +76,15 @@
                         document.getElementById("t3").value=arr[1];
                         document.getElementById("t4").value=arr[2];
                         document.getElementById("t0").value=arr[3];
+                        
+                        var amt=0;
+                        if(arr[2]=="Personal Car") amt=80;
+                        if(arr[2]=="Commercial Car") amt=100;
+                        if(arr[2]=="Tempo") amt=150;
+                        if(arr[2]=="Mini Truck") amt=250;
+                        if(arr[2]=="Truck") amt=500;
+                        if(arr[2]=="16 Tyre Truck") amt=800;
+                        document.getElementById("t7").value=amt;
                     }
                 }
             }
@@ -106,15 +118,9 @@
                 </tr>
                 <tr>
                     <td>Vehicle Code:</td><td><input type="text" name="t0" id="t0" readonly></td><td></td>
-                </tr>
+                </tr>                
                 <tr>
-                    <td>In Date:</td><td><input type="date" name="t5" id="t5"></td><td></td>
-                </tr>
-                <tr>
-                    <td>In Time:</td><td><input type="time" name="t6" id="t6"></td><td></td>
-                </tr>
-                <tr>
-                    <td>Toll Amount:</td><td><input type="number" name="t7" id="t7"></td><td></td>
+                    <td>Toll Amount:</td><td><input type="number" name="t7" id="t7" readonly></td><td></td>
                 </tr>
                 <tr>
                     <td></td><td><input type="submit" name="b1" value="   Done   " onclick="return confirm('Are you sure?');"></td><td></td>

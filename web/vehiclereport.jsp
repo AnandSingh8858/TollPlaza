@@ -39,8 +39,33 @@
             <a href="logout.jsp">Logout</a><hr>
         </div>
         <div style="width:84%;background-color: antiquewhite; float: right">
-            <img src="images/adminp.png" width="100%"><br>
-            <center><h2>Select an Activity from Left Side</h2></center>
+            <form method="post">
+                From Date:<input type="date" name="t1"> To Date:<input type="date" name="t2"><input type="submit" name="b1" value="Generate Report">
+            </form><hr>
+            <%
+                if(request.getParameter("b1")!=null)
+                {
+                    stmt=con.prepareStatement("Select indate,outdate,amt,VehicleNo,VehicleType from JourneyDetails,Vehicles where JourneyDetails.vid=Vehicles.vid and indate>=? and indate<=?");
+                    stmt.setString(1,request.getParameter("t1"));
+                    stmt.setString(2,request.getParameter("t2"));
+                    rs=stmt.executeQuery();
+                    out.write("<table align='center' border='1'>");
+                    out.write("<tr><th>In Date</th><th>Out Date</th><th>Amount</th><th>Vehicle No</th><th>Vehicle Type</th></tr>");
+                    while(rs.next())
+                    {
+                        out.write("<tr>");
+                        out.write("<td>"+rs.getString(1)+"</td>");
+                        out.write("<td>"+rs.getString(2)+"</td>");
+                        out.write("<td>"+rs.getString(3)+"</td>");
+                        out.write("<td>"+rs.getString(4)+"</td>");
+                        out.write("<td>"+rs.getString(5)+"</td>");
+                        out.write("</tr>");
+                    }
+                    out.write("<tr><td colspan='5'><a href='#' onClick='javascript:window.print()'>Print</a></td></tr>");
+                    out.write("</table>");
+                }
+            %>
+            
         </div>
         <img src="images/footer.jpg" width="100%" height="200px">
     </body>

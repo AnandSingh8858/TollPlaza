@@ -17,22 +17,7 @@
         Connection con=(Connection)session.getAttribute("CON");
         PreparedStatement stmt;
         ResultSet rs;
-        if(request.getParameter("b1")!=null)
-        {
-            stmt=con.prepareStatement("Select count(*)+1 from amounttransactions");
-            rs=stmt.executeQuery();
-            String tid="";
-            if(rs.next()) tid=rs.getString(1);
-            stmt=con.prepareStatement("Insert into amounttransactions values(?,?,?,?,?,?,?)");
-            stmt.setString(1,tid);
-            stmt.setObject(2,session.getAttribute("ULOGIN"));
-            stmt.setString(3,request.getParameter("t1"));
-            stmt.setString(4,request.getParameter("t3"));
-            stmt.setString(5,"C");
-            stmt.setString(6,request.getParameter("t2")+","+request.getParameter("t4"));
-            stmt.setString(7,"SELF");
-            stmt.executeUpdate();
-        }
+        
 %>
 <!DOCTYPE html>
 <html>
@@ -52,7 +37,7 @@
             <a href="logout.jsp">Logout</a><hr>
         </div>
         <div style="width:84%;background-color: antiquewhite; float: right">
-            <form method="post">
+            <form method="post" action="receipt.jsp">
             <table align="center">
                 <tr><th colspan="3">Add Fund</th></tr>
                 <tr>
