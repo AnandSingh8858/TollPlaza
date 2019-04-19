@@ -4,7 +4,7 @@ target/*
 
 /target/
 
-# ignoring eclipse files in favor of netbeans
-.classpath
-.project
-.settings/
+# # ignoring eclipse files in favor of netbeans
+# .classpath
+# .project
+# .settings/
