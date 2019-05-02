@@ -17,9 +17,10 @@
         <%
                 
                 Connection con=db.getConnection();
-                PreparedStatement stmt=con.prepareStatement("Create Database TollApp");
-                stmt.executeUpdate();
-                stmt=con.prepareStatement("Use TollApp");
+              //  PreparedStatement stmt=con.prepareStatement("Create Database TollApp");
+           //     stmt.executeUpdate(); 
+           //		PreparedStatement stmt=con.prepareStatement();
+           		PreparedStatement stmt=con.prepareStatement("Use TollApp");
                 stmt.executeUpdate();
                 stmt=con.prepareStatement("CREATE TABLE users(ulogin varchar(30),upass varchar(30),utype varchar(30))");
                 stmt.executeUpdate();
