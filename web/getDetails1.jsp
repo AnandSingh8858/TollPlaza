@@ -11,7 +11,9 @@
     String vno=request.getParameter("vno");
     
     Connection con=db.getConnection();
-    PreparedStatement stmt=con.prepareStatement("Select V1.*,J1.* from vehicles V1,journey_details J1 where V1.vehicle_id=J1.vehicle_id and  vnumber=? and OutDate is null");
+
+    PreparedStatement stmt=con.prepareStatement("Select V1.*,J1.* from vehicles V1,journey_details J1 where V1.vehicle_id=J1.VID and V1.vnumber=? and J1.OutDate is null");
+
     stmt.setString(1,vno);
     ResultSet rs=stmt.executeQuery();
     String s="N";
